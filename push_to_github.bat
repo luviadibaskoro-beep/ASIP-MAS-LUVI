@@ -4,43 +4,46 @@ echo ==================================================
 echo       Push ASIP Monitor ke GitHub
 echo ==================================================
 echo.
-git --version >nul 2>&1
-if %errorlevel% neq 0 (
-    echo [ERROR] Git tidak terdeteksi di komputer Anda.
-    echo Silakan unduh dan instal Git untuk Windows terlebih dahulu dari:
-    echo https://git-scm.com/download/win
-    echo.
-    echo Setelah menginstal Git, jalankan kembali file batch ini.
-    pause
-    exit /b
+
+set GIT_PATH=git
+if exist ".git-portable\cmd\git.exe" (
+    echo [INFO] Menggunakan Git Portabel yang sudah disiapkan...
+    set GIT_PATH="%~dp0.git-portable\cmd\git.exe"
+) else (
+    git --version >nul 2>&1
+    if %errorlevel% neq 0 (
+        echo [ERROR] Git tidak terdeteksi di komputer Anda.
+        echo Silakan unduh dan instal Git untuk Windows terlebih dahulu dari:
+        echo https://git-scm.com/download/win
+        echo.
+        echo Setelah menginstal Git, jalankan kembali file batch ini.
+        pause
+        exit /b
+    )
 )
 
-set /p REPO_URL="Masukkan URL Repositori GitHub Anda (misal: https://github.com/username/asip-monitor.git): "
-
-if "%REPO_URL%"=="" (
-    echo [ERROR] URL Repositori tidak boleh kosong.
-    pause
-    exit /b
-)
+set REPO_URL=https://github.com/luviadibaskoro-beep/ASIP-MAS-LUVI.git
 
 echo.
-echo [1/5] Menginisialisasi repositori Git lokal...
-git init
+echo [1/4] Menginisialisasi repositori Git lokal...
+%GIT_PATH% init
 
-echo [2/5] Menambahkan file proyek (mengabaikan node_modules & .node)...
-git add .
+echo [2/4] Menambahkan file proyek...
+%GIT_PATH% add .
 
-echo [3/5] Membuat commit pertama...
-git commit -m "Initial commit with GitHub Actions workflow"
+echo [3/4] Membuat commit...
+%GIT_PATH% config user.name "Ibu Hebat"
+%GIT_PATH% config user.email "ibu@asipmonitor.com"
+%GIT_PATH% commit -m "Initial commit with GitHub Actions workflow"
+%GIT_PATH% branch -M main
+%GIT_PATH% remote remove origin >nul 2>&1
+%GIT_PATH% remote add origin %REPO_URL%
 
-echo [4/5] Mengatur branch utama dan link remote...
-git branch -M main
-git remote remove origin >nul 2>&1
-git remote add origin %REPO_URL%
-
-echo [5/5] Mengunggah proyek ke GitHub...
-echo (Anda mungkin akan dimintai otorisasi login GitHub di peramban/browser)
-git push -u origin main
+echo [4/4] Mengunggah proyek ke GitHub...
+echo Jendela web/browser untuk login GitHub akan terbuka otomatis.
+echo Silakan lakukan login/otorisasi untuk melanjutkan unggahan.
+echo.
+%GIT_PATH% push -u origin main
 
 echo.
 echo ==================================================
