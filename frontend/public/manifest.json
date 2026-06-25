@@ -1,0 +1,17 @@
+{
+  "short_name": "ASIP Monitor",
+  "name": "ASIP Monitor - Breast Milk Tracker",
+  "icons": [
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#f8fafc",
+  "theme_color": "#0ea5e9",
+  "display": "standalone",
+  "orientation": "portrait"
+}

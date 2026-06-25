@@ -1,0 +1,8 @@
+{
+  "appId": "com.asipmonitor.app",
+  "appName": "ASIP Monitor",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}

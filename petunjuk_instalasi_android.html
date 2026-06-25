@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instalasi ASIP Monitor di Android 📱</title>
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;850&family=Inter:wght@400;500;650&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --brand-500: #0ea5e9;
+      --brand-600: #0284c7;
+      --brand-50: #f0f9ff;
+      --slate-50: #f8fafc;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-200: #e2e8f0;
+      --emerald-500: #10b981;
+      --emerald-50: #ecfdf5;
+      --rosebrand-500: #f43f5e;
+      --rosebrand-50: #fff1f2;
+    }
+
+    body {
+      font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--slate-50);
+      color: var(--slate-800);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--brand-500), var(--brand-600));
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 40px 20px;
+      box-shadow: 0 4px 20px rgba(14, 165, 233, 0.15);
+      box-sizing: border-box;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      font-weight: 850;
+      letter-spacing: -0.025em;
+    }
+
+    header p {
+      margin: 10px 0 0;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    main {
+      max-width: 800px;
+      width: 90%;
+      margin: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 24px;
+      border: 1px solid var(--slate-200);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+      padding: 30px;
+      box-sizing: border-box;
+    }
+
+    .flex-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+    }
+
+    @media (min-width: 640px) {
+      .flex-card {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+        justify-content: space-around;
+        gap: 40px;
+      }
+    }
+
+    .qr-container {
+      background: var(--slate-50);
+      padding: 20px;
+      border-radius: 20px;
+      border: 1px dashed var(--brand-500);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.01);
+    }
+
+    .qr-container img {
+      width: 220px;
+      height: 220px;
+      border-radius: 8px;
+    }
+
+    .qr-container .ip-badge {
+      font-family: monospace;
+      font-size: 0.85rem;
+      background: var(--brand-50);
+      color: var(--brand-600);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-weight: 700;
+      border: 1px solid rgba(14, 165, 233, 0.15);
+    }
+
+    .instructions-card h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: var(--slate-800);
+      border-bottom: 2px solid var(--slate-50);
+      padding-bottom: 10px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      background: var(--brand-50);
+      color: var(--brand-600);
+      font-weight: 800;
+      font-size: 0.95rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid rgba(14, 165, 233, 0.15);
+    }
+
+    .step-content h3 {
+      margin: 0 0 5px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--slate-800);
+    }
+
+    .step-content p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--slate-600);
+      line-height: 1.5;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: 9999px;
+    }
+    .badge-pink {
+      background-color: var(--rosebrand-50);
+      color: var(--rosebrand-500);
+    }
+    .badge-green {
+      background-color: var(--emerald-50);
+      color: var(--emerald-500);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--slate-500);
+      font-size: 0.85rem;
+    }
+
+    .footer a {
+      color: var(--brand-600);
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Instalasi ASIP Monitor di Smartphone Android 📱</h1>
+    <p>Hubungkan, scan, dan pasang aplikasi langsung di HP Anda dalam hitungan detik</p>
+  </header>
+
+  <main>
+    
+    <!-- QR Code Scan Card -->
+    <div class="card flex-card">
+      <div class="qr-container">
+        <!-- Generates a QR code linking directly to Vite's local network dev server -->
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=http://192.168.1.45:5173/" alt="Scan Me to Install!">
+        <div class="ip-badge">http://192.168.1.45:5173</div>
+      </div>
+      <div>
+        <h2 style="margin-top:0; font-size: 1.6rem; font-weight: 800; tracking-tight">Scan Kode QR Ini!</h2>
+        <p style="color: var(--slate-600); line-height: 1.6; font-size: 0.95rem;">
+          Aplikasi PWA (Progressive Web App) kami telah dikonfigurasi untuk berjalan di Wi-Fi lokal Anda. Cukup arahkan kamera handphone Anda ke kode QR di samping untuk langsung membuka aplikasi.
+        </p>
+        <div style="margin-top: 15px; display: flex; gap: 10px;">
+          <span class="badge badge-pink">💩 Keseharian Bayi</span>
+          <span class="badge badge-green">💧 Pumping ASIP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step-by-Step Instructions -->
+    <div class="card instructions-card">
+      <h2>Langkah-Langkah Instalasi</h2>
+      <div class="steps">
+        
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Hubungkan ke Wi-Fi Yang Sama</h3>
+            <p>Pastikan Smartphone Android Anda terhubung ke jaringan Wi-Fi yang sama dengan komputer ini (misalnya Wi-Fi rumah atau kantor Anda).</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Pindai Kode QR</h3>
+            <p>Buka aplikasi Kamera bawaan HP Android Anda atau aplikasi QR Scanner lainnya, arahkan ke kode QR di atas, lalu ketuk tautan yang muncul untuk membukanya di <strong>Google Chrome</strong>.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Ketuk "Instal Aplikasi" atau "Tambahkan ke Layar Utama"</h3>
+            <p>Setelah halaman aplikasi termuat di Google Chrome, biasanya akan muncul spanduk di bagian bawah layar bertuliskan <strong>"Tambahkan ASIP Monitor ke Layar Utama"</strong>. Jika tidak muncul, ketuk tombol menu Chrome (titik tiga di kanan atas) dan pilih opsi <strong>"Instal Aplikasi"</strong> atau <strong>"Tambahkan ke Layar Utama"</strong>.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Siap Digunakan Sebagai Aplikasi Native</h3>
+            <p>Aplikasi ASIP Monitor akan langsung terinstal di smartphone Android Anda. Ikon aplikasi akan muncul di daftar aplikasi Anda dan akan terbuka secara full-screen (tanpa bilah alamat browser) serta mendukung penggunaan offline!</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <div class="footer">
+    <p>ASIP Monitor Prototype &copy; 2026. Diaktifkan secara lokal oleh Antigravity.</p>
+  </div>
+
+</body>
+</html>

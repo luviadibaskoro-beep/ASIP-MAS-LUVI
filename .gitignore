@@ -1,0 +1,27 @@
+# Ignore portable Node.js and Git directories
+.node/
+.git-portable/
+
+# Ignore node_modules in subfolders
+**/node_modules/
+node_modules/
+
+# Ignore distribution and build outputs
+**/dist/
+dist/
+**/build/
+build/
+
+# Ignore local database and logs
+**/*.sqlite
+**/*.log
+.env
+.env.*
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore Capacitor build assets that are generated
+**/android/app/build/
+**/android/app/src/main/assets/public/
