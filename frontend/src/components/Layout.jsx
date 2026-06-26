@@ -67,8 +67,8 @@ export default function Layout({ children }) {
         flex flex-col justify-between
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
-        {/* Sidebar Header */}
-        <div>
+        {/* Scrollable upper half of sidebar */}
+        <div className="flex-1 overflow-y-auto">
           <div className="h-16 flex items-center justify-between px-6 border-b border-slate-100 dark:border-slate-700 bg-brand-500 text-white">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">

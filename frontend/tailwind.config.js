@@ -46,6 +46,9 @@ export default {
       },
       fontFamily: {
         sans: ['Outfit', 'Inter', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        'xxs': '0.7rem',
       }
     },
   },

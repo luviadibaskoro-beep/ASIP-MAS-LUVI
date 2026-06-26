@@ -194,7 +194,7 @@ export default function SettingsPanel() {
             <div className="grid grid-cols-2 gap-2 pt-1">
               <button
                 onClick={() => handleThemeChange('light')}
-                className={`py-2 rounded-xl text-xs font-semibold border flex items-center justify-center gap-1.5 transition ${settings.theme === 'light' ? 'bg-brand-50 border-brand-350 text-brand-650 dark:bg-slate-750' : 'bg-slate-55 border-slate-200 text-slate-500 dark:bg-slate-900 dark:border-slate-700'}`}
+                className={`py-2 rounded-xl text-xs font-semibold border flex items-center justify-center gap-1.5 transition ${settings.theme === 'light' ? 'bg-brand-50 border-brand-350 text-brand-650 dark:bg-slate-750 dark:border-brand-500 dark:text-brand-350' : 'bg-slate-55 border-slate-200 text-slate-500 dark:bg-slate-900 dark:border-slate-700'}`}
               >
                 <Sun className="w-4 h-4 text-amber-500" />
                 <span>Terang</span>
