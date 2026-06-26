@@ -36,9 +36,9 @@ export default function StatisticsCharts() {
 
   // Pie chart colors
   const PIE_COLORS = {
-    left: '#f472b6',   // Pink for left side
-    right: '#38bdf8',  // Blue for right side
-    both: '#34d399'    // Emerald for both sides
+    left: '#e47272',   // Rose pink for left side
+    right: '#378685',  // Teal mint for right side
+    both: '#fb923c'    // Warm orange/peach for both sides
   };
 
   // Convert breastSides array to a format that PieChart expects
@@ -483,7 +483,7 @@ export default function StatisticsCharts() {
                   <XAxis dataKey="date" tickFormatter={formatDateLabel} tick={{ fontSize: 10 }} stroke="#94A3B8" />
                   <YAxis tick={{ fontSize: 10 }} stroke="#94A3B8" />
                   <Tooltip content={<CustomTooltip />} />
-                  <Bar dataKey="amount" fill="#38bdf8" radius={[4, 4, 0, 0]} maxBarSize={40} />
+                  <Bar dataKey="amount" fill="#e47272" radius={[4, 4, 0, 0]} maxBarSize={40} />
                 </BarChart>
               </ResponsiveContainer>
             ) : chartPeriod === 'monthly' ? (
@@ -491,15 +491,15 @@ export default function StatisticsCharts() {
                 <AreaChart data={monthly} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                   <defs>
                     <linearGradient id="colorStatsAmount" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#0ea5e9" stopOpacity={0.4}/>
-                      <stop offset="95%" stopColor="#0ea5e9" stopOpacity={0.0}/>
+                      <stop offset="5%" stopColor="#bc5a58" stopOpacity={0.4}/>
+                      <stop offset="95%" stopColor="#bc5a58" stopOpacity={0.0}/>
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E2E8F0" className="dark:stroke-slate-700" />
                   <XAxis dataKey="date" tickFormatter={formatDateLabel} tick={{ fontSize: 8 }} stroke="#94A3B8" interval={Math.round(monthly.length / 6)} />
                   <YAxis tick={{ fontSize: 10 }} stroke="#94A3B8" />
                   <Tooltip content={<CustomTooltip />} />
-                  <Area type="monotone" dataKey="amount" stroke="#0ea5e9" strokeWidth={2} fillOpacity={1} fill="url(#colorStatsAmount)" />
+                  <Area type="monotone" dataKey="amount" stroke="#bc5a58" strokeWidth={2} fillOpacity={1} fill="url(#colorStatsAmount)" />
                 </AreaChart>
               </ResponsiveContainer>
             ) : (
@@ -510,7 +510,7 @@ export default function StatisticsCharts() {
                   <XAxis dataKey="date" tickFormatter={formatDateLabel} tick={{ fontSize: 10 }} stroke="#94A3B8" />
                   <YAxis tick={{ fontSize: 10 }} stroke="#94A3B8" />
                   <Tooltip content={<CustomTooltip />} />
-                  <Line type="monotone" dataKey="amount" stroke="#10b981" strokeWidth={3} activeDot={{ r: 6 }} />
+                  <Line type="monotone" dataKey="amount" stroke="#378685" strokeWidth={3} activeDot={{ r: 6 }} />
                 </LineChart>
               </ResponsiveContainer>
             )}
