@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useApp } from './context/AppContext';
 import Login from './components/Login';
 import Layout from './components/Layout';
@@ -9,9 +9,15 @@ import StatisticsCharts from './components/StatisticsCharts';
 import NotificationSim from './components/NotificationSim';
 import SettingsPanel from './components/SettingsPanel';
 import BabyRoutine from './components/BabyRoutine';
+import PremiumSplash from './components/PremiumSplash';
 
 export default function AppContent() {
   const { user, activeTab, loading } = useApp();
+  const [showSplash, setShowSplash] = useState(true);
+
+  if (showSplash) {
+    return <PremiumSplash onComplete={() => setShowSplash(false)} />;
+  }
 
   if (loading) {
     return (
