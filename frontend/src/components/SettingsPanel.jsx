@@ -307,9 +307,15 @@ export default function SettingsPanel() {
           {/* Account & Session Card */}
           <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-xs space-y-4">
             <h3 className="font-bold text-slate-800 dark:text-white text-sm">Akun Anda</h3>
-            <div className="bg-slate-50 dark:bg-slate-900/60 p-3.5 rounded-xl border border-slate-100 dark:border-slate-700/50">
-              <p className="text-[10px] font-bold text-slate-400 uppercase">Email Terdaftar</p>
-              <p className="text-xs font-semibold text-slate-700 dark:text-slate-200 mt-0.5 truncate">{user?.email || 'ibu@asip.com'}</p>
+            <div className="space-y-2">
+              <div className="bg-slate-50 dark:bg-slate-900/60 p-3.5 rounded-xl border border-slate-100 dark:border-slate-700/50">
+                <p className="text-[10px] font-bold text-slate-400 uppercase">Nama Panggilan</p>
+                <p className="text-xs font-semibold text-slate-700 dark:text-slate-200 mt-0.5 truncate">{user?.name || 'Ibu ASIP'}</p>
+              </div>
+              <div className="bg-slate-50 dark:bg-slate-900/60 p-3.5 rounded-xl border border-slate-100 dark:border-slate-700/50">
+                <p className="text-[10px] font-bold text-slate-400 uppercase">Email Terdaftar</p>
+                <p className="text-xs font-semibold text-slate-700 dark:text-slate-200 mt-0.5 truncate">{user?.email || 'ibu@asip.com'}</p>
+              </div>
             </div>
             
             <button
@@ -318,7 +324,7 @@ export default function SettingsPanel() {
                   logoutUser();
                 }
               }}
-              className="w-full py-2.5 bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/20 dark:hover:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-900/40 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition"
+              className="w-full py-2.5 bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/20 dark:hover:bg-rose-950/40 text-rose-600 dark:text-rose-450 border border-rose-200 dark:border-rose-900/40 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition"
             >
               <LogOut className="w-4 h-4" />
               <span>Keluar dari Akun</span>
