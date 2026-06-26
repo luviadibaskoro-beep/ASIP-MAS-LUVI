@@ -9,8 +9,9 @@ on:
 
 jobs:
   build:
-    name: Build Android APK
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout Code
@@ -51,7 +52,16 @@ jobs:
       - name: Sync Capacitor Android
         run: |
           cd frontend
-          npx cap sync android
+          npx cap sync android > ../sync_error.log 2>&1 || (cat ../sync_error.log && exit 1)
+
+      - name: Commit and Push Error Log
+        if: failure()
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add sync_error.log || true
+          git commit -m "chore: add sync error log [skip ci]" || true
+          git push origin main || true
 
       - name: Build APK with Gradle
         run: |
