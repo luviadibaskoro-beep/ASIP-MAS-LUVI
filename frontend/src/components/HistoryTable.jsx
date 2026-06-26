@@ -228,7 +228,7 @@ export default function HistoryTable() {
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={handleExportCSV}
-              className="flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-600 dark:text-emerald-400 border border-emerald-250 dark:border-emerald-900/50 hover:bg-emerald-100/50 px-4 py-2 rounded-xl text-xs font-bold transition"
+              className="flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/50 hover:bg-emerald-100/50 px-4 py-2 rounded-xl text-xs font-bold transition"
             >
               <FileSpreadsheet className="w-4 h-4" />
               <span>Ekspor ke Excel</span>
@@ -291,7 +291,7 @@ export default function HistoryTable() {
                             ? 'bg-rosebrand-50 text-rosebrand-600 border-rosebrand-200 dark:bg-rose-950/20 dark:text-rose-400 dark:border-rose-900/50'
                             : record.breast_side === 'right'
                             ? 'bg-brand-50 text-brand-650 border-brand-200 dark:bg-slate-750 dark:text-brand-350 dark:border-brand-850'
-                            : 'bg-emerald-50 text-emerald-650 border-emerald-250 dark:bg-emerald-950/20 dark:text-emerald-400 dark:border-emerald-900/50'
+                            : 'bg-emerald-50 text-emerald-600 border-emerald-200 dark:bg-emerald-950/20 dark:text-emerald-400 dark:border-emerald-900/50'
                         }`}>
                           {record.breast_side === 'left' ? 'Kiri' : record.breast_side === 'right' ? 'Kanan' : 'Keduanya'}
                         </span>
@@ -335,7 +335,7 @@ export default function HistoryTable() {
                           ? 'bg-rosebrand-50 text-rosebrand-600 border-rosebrand-200 dark:bg-rose-950/20 dark:text-rose-400 dark:border-rose-900/50'
                           : record.breast_side === 'right'
                           ? 'bg-brand-50 text-brand-650 border-brand-200 dark:bg-slate-750 dark:text-brand-350 dark:border-brand-850'
-                          : 'bg-emerald-50 text-emerald-650 border-emerald-250 dark:bg-emerald-950/20 dark:text-emerald-400 dark:border-emerald-900/50'
+                          : 'bg-emerald-50 text-emerald-600 border-emerald-200 dark:bg-emerald-950/20 dark:text-emerald-400 dark:border-emerald-900/50'
                       }`}>
                         {record.breast_side === 'left' ? 'Kiri' : record.breast_side === 'right' ? 'Kanan' : 'Keduanya'}
                       </span>

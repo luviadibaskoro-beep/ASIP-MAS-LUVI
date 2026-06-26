@@ -131,7 +131,7 @@ export default function Layout({ children }) {
 
           <button
             onClick={logoutUser}
-            className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-rose-650 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/20 rounded-xl transition"
+            className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/20 rounded-xl transition"
           >
             <LogOut className="w-5 h-5 text-rose-500" />
             <span>Keluar</span>

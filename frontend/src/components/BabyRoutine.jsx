@@ -385,7 +385,7 @@ export default function BabyRoutine() {
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-[2] py-2 bg-gradient-to-r from-rosebrand-450 to-rosebrand-500 hover:from-rosebrand-550 hover:to-rosebrand-600 text-white text-xs font-bold rounded-xl flex items-center justify-center gap-1.5 shadow-xs hover:shadow-sm active:scale-[0.98] transition disabled:opacity-50"
+                className="flex-[2] py-2 bg-gradient-to-r from-rosebrand-500 to-rosebrand-600 hover:from-rosebrand-600 hover:to-rosebrand-600 text-white text-xs font-bold rounded-xl flex items-center justify-center gap-1.5 shadow-xs hover:shadow-sm active:scale-[0.98] transition disabled:opacity-50"
               >
                 <Baby className="w-4 h-4" />
                 <span>{loading ? 'Menyimpan...' : 'Simpan Data'}</span>
@@ -549,7 +549,7 @@ export default function BabyRoutine() {
                         </button>
                         <button
                           onClick={() => handleDelete(item.id)}
-                          className="w-10 h-10 flex items-center justify-center bg-rose-50/50 hover:bg-rose-50 dark:bg-rose-950/15 dark:hover:bg-rose-950/30 rounded-xl text-slate-500 hover:text-rose-650 dark:hover:text-rose-455 transition border border-rose-100 dark:border-rose-900/40"
+                          className="w-10 h-10 flex items-center justify-center bg-rose-50/50 hover:bg-rose-50 dark:bg-rose-950/15 dark:hover:bg-rose-950/30 rounded-xl text-slate-500 hover:text-rosebrand-600 transition border border-rose-100 dark:border-rose-900/40"
                           title="Hapus Log"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
@@ -560,7 +560,7 @@ export default function BabyRoutine() {
                     <div className="flex flex-wrap gap-2">
                       <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
                         item.bab_count > 0 
-                          ? 'bg-rose-50 text-rose-650 border border-rose-200 dark:bg-rose-950/30 dark:text-rose-400 dark:border-rose-900/40' 
+                          ? 'bg-rose-50 text-rosebrand-600 border border-rose-200 dark:bg-rose-950/30 dark:text-rose-400 dark:border-rose-900/40' 
                           : 'bg-slate-50 text-slate-450 dark:bg-slate-900/40 dark:text-slate-500 border border-slate-200 dark:border-slate-800'
                       }`}>
                         <span>💩</span>
@@ -568,7 +568,7 @@ export default function BabyRoutine() {
                       </span>
                       <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
                         item.bak_count > 0 
-                          ? 'bg-emerald-50 text-emerald-650 border border-emerald-250 dark:bg-emerald-950/30 dark:text-emerald-400 dark:border-emerald-900/40' 
+                          ? 'bg-emerald-50 text-emerald-600 border border-emerald-200 dark:bg-emerald-950/30 dark:text-emerald-400 dark:border-emerald-900/40' 
                           : 'bg-slate-50 text-slate-450 dark:bg-slate-900/40 dark:text-slate-500 border border-slate-200 dark:border-slate-800'
                       }`}>
                         <span>💧</span>
