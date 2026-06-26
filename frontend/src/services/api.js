@@ -277,6 +277,23 @@ export const api = {
     }
   },
 
+  async updateProfile(name) {
+    try {
+      const data = await request('/auth/profile', {
+        method: 'PUT',
+        body: JSON.stringify({ name })
+      });
+      localStorage.setItem('asip_user_name', name);
+      return data;
+    } catch (err) {
+      if (err.message === 'OFFLINE') {
+        localStorage.setItem('asip_user_name', name);
+        return { name };
+      }
+      throw err;
+    }
+  },
+
   // Records CRUD
   async getRecords(filters = {}) {
     try {

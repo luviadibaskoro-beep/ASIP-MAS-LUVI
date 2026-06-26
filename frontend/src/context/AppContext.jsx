@@ -201,6 +201,17 @@ export function AppProvider({ children }) {
     setActiveTab('dashboard');
   };
 
+  const updateProfile = async (newName) => {
+    try {
+      await api.updateProfile(newName);
+      setUser(prev => prev ? { ...prev, name: newName } : null);
+      return true;
+    } catch (err) {
+      console.error('Error updating profile:', err);
+      return false;
+    }
+  };
+
   const addRecord = async (recordData) => {
     try {
       const newRec = await api.createRecord(recordData);
@@ -391,6 +402,7 @@ export function AppProvider({ children }) {
       loginUser,
       logoutUser,
       registerUser,
+      updateProfile,
       addRecord,
       editRecord,
       removeRecord,

@@ -1,6 +1,9 @@
 # Ignore portable Node.js and Git directories
 .node/
 .git-portable/
+jdk/
+jdk21/
+*.zip
 
 # Ignore node_modules in subfolders
 **/node_modules/

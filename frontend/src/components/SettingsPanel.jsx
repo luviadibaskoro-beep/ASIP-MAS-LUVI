@@ -8,7 +8,8 @@ export default function SettingsPanel() {
     settings,
     saveSettings,
     backupData,
-    restoreData
+    restoreData,
+    updateProfile
   } = useApp();
 
   // Settings State
@@ -44,7 +45,12 @@ export default function SettingsPanel() {
     }
 
     // Save profile name
-    localStorage.setItem('asip_user_name', name);
+    const profileSuccess = await updateProfile(name);
+    if (!profileSuccess) {
+      showFeedback('Gagal menyimpan nama panggilan.', 'error');
+      setSaving(false);
+      return;
+    }
 
     // Save settings
     const success = await saveSettings({

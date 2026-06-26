@@ -81,6 +81,23 @@ app.post('/api/auth/register', (req, res) => {
   });
 });
 
+app.put('/api/auth/profile', (req, res) => {
+  const userId = getUserId(req);
+  const { name } = req.body;
+  if (!name) {
+    return res.status(400).json({ error: 'Nama tidak boleh kosong' });
+  }
+
+  db.run(
+    'UPDATE users SET name = ? WHERE id = ?',
+    [name, userId],
+    function (err) {
+      if (err) return res.status(500).json({ error: err.message });
+      res.json({ message: 'Profil berhasil diperbarui', name });
+    }
+  );
+});
+
 // --- SETTINGS ROUTES ---
 app.get('/api/settings', (req, res) => {
   const userId = getUserId(req);
