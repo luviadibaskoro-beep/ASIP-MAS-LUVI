@@ -20,6 +20,11 @@ const getUserId = (req) => {
   return parseInt(userId);
 };
 
+// Health Check Endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', database: 'connected', timestamp: new Date().toISOString() });
+});
+
 // --- AUTH ROUTES (Prototype Simulation) ---
 app.post('/api/auth/login', (req, res) => {
   const { email, password } = req.body;

@@ -16,6 +16,7 @@ export default function SettingsPanel() {
   const [name, setName] = useState(user?.name || 'Ibu ASIP');
   const [target, setTarget] = useState(settings.daily_target);
   const [interval, setInterval] = useState(settings.notification_interval);
+  const [apiUrl, setApiUrl] = useState(localStorage.getItem('asip_api_url') || '');
   
   // UX State
   const [toastMsg, setToastMsg] = useState(null);
@@ -204,6 +205,68 @@ export default function SettingsPanel() {
               >
                 <Moon className="w-4 h-4 text-brand-500" />
                 <span>Gelap</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Online database server configuration card */}
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-xs space-y-4">
+            <h3 className="font-bold text-slate-800 dark:text-white text-sm flex items-center gap-2">
+              <Database className="w-4 h-4 text-brand-500" />
+              <span>Server Database Online</span>
+            </h3>
+            <p className="text-xs text-slate-400">Sambungkan aplikasi Anda ke database online agar data tersinkronisasi di semua perangkat (publik).</p>
+            
+            <div className="space-y-3 pt-1">
+              <div className="space-y-1">
+                <label className="text-[10px] font-bold text-slate-400 uppercase block">URL Server Database (API)</label>
+                <input
+                  type="url"
+                  placeholder="https://asip-backend.onrender.com"
+                  value={apiUrl}
+                  onChange={(e) => setApiUrl(e.target.value)}
+                  className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-brand-450 text-xs dark:text-white transition"
+                />
+              </div>
+              <button
+                type="button"
+                onClick={async () => {
+                  const cleanUrl = apiUrl.trim();
+                  if (!cleanUrl) {
+                    localStorage.removeItem('asip_api_url');
+                    showFeedback('Menggunakan database lokal default.');
+                    setTimeout(() => window.location.reload(), 1000);
+                    return;
+                  }
+                  
+                  try {
+                    showFeedback('Menghubungkan ke server...', 'success');
+                    const testUrl = cleanUrl.endsWith('/api') ? `${cleanUrl}/health` : `${cleanUrl}/api/health`;
+                    const res = await fetch(testUrl).catch(() => null);
+                    
+                    if (res && res.ok) {
+                      localStorage.setItem('asip_api_url', cleanUrl);
+                      showFeedback('Terhubung! Aplikasi memuat ulang.');
+                      setTimeout(() => window.location.reload(), 1500);
+                    } else {
+                      // Fallback check
+                      const fallbackUrl = cleanUrl.endsWith('/api') ? `${cleanUrl}/records` : `${cleanUrl}/api/records`;
+                      const res2 = await fetch(fallbackUrl, { headers: { 'X-User-Id': '1' } }).catch(() => null);
+                      if (res2) {
+                        localStorage.setItem('asip_api_url', cleanUrl);
+                        showFeedback('Terhubung! Aplikasi memuat ulang.');
+                        setTimeout(() => window.location.reload(), 1500);
+                      } else {
+                        showFeedback('Gagal terhubung ke database online. Periksa URL Anda.', 'error');
+                      }
+                    }
+                  } catch (err) {
+                    showFeedback('Gagal menghubungi server database.', 'error');
+                  }
+                }}
+                className="w-full py-2 bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs rounded-xl shadow-xs transition"
+              >
+                Simpan & Hubungkan
               </button>
             </div>
           </div>

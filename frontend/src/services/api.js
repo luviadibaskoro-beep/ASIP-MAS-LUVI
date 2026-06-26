@@ -1,4 +1,10 @@
 const getApiBaseUrl = () => {
+  // If user configured a custom online database URL
+  const customUrl = localStorage.getItem('asip_api_url');
+  if (customUrl) {
+    return customUrl.endsWith('/api') ? customUrl : `${customUrl}/api`;
+  }
+
   const hostname = window.location.hostname;
   // If accessed over Wi-Fi/local network (like 192.168.1.45)
   if (hostname && hostname !== 'localhost' && hostname !== '127.0.0.1') {

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panduan Hosting Database Online - ASIPCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #bc5a58;
+      --accent: #378685;
+      --bg: #fff7f7;
+      --text: #374151;
+      --border: #e5e7eb;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, var(--primary), #a34947);
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+      border-bottom-left-radius: 2rem;
+      border-bottom-right-radius: 2rem;
+      box-shadow: 0 4px 20px rgba(188, 90, 88, 0.15);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1.1rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .card {
+      background: white;
+      border-radius: 1.5rem;
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+    h2 {
+      font-family: 'Outfit', sans-serif;
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-top: 0;
+      border-bottom: 2px solid #ffd6d5;
+      padding-bottom: 0.5rem;
+    }
+    h3 {
+      font-family: 'Outfit', sans-serif;
+      color: var(--accent);
+      font-size: 1.3rem;
+      margin-top: 1.5rem;
+    }
+    ol, ul {
+      padding-left: 1.25rem;
+    }
+    li {
+      margin-bottom: 0.75rem;
+    }
+    code {
+      background-color: #f3f4f6;
+      color: #b91c1c;
+      padding: 0.2rem 0.4rem;
+      border-radius: 0.375rem;
+      font-family: monospace;
+      font-size: 0.9em;
+    }
+    .code-block {
+      background-color: #1f2937;
+      color: #f9fafb;
+      padding: 1.25rem;
+      border-radius: 0.75rem;
+      font-family: monospace;
+      overflow-x: auto;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-right: 0.5rem;
+    }
+    .badge-free {
+      background-color: #d1fae5;
+      color: #065f46;
+    }
+    .badge-recommend {
+      background-color: #dbeafe;
+      color: #1e40af;
+    }
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      transition: background-color 0.2s;
+      margin-top: 1rem;
+    }
+    .btn:hover {
+      background-color: #a34947;
+    }
+    .btn-accent {
+      background-color: var(--accent);
+    }
+    .btn-accent:hover {
+      background-color: #2b6d6c;
+    }
+    .alert {
+      background-color: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      color: #78350f;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Hosting Database ASIP Online</h1>
+    <p>Panduan langkah demi langkah mempublikasikan server & database ASIPCare secara gratis.</p>
+  </header>
+
+  <main>
+    
+    <div class="card">
+      <h2>Pendahuluan</h2>
+      <p>Aplikasi <strong>ASIPCare</strong> saat ini mendukung mode penyimpanan lokal (offline) dan mode online. Dengan menaruh database Anda di server online (cloud), Anda dapat:</p>
+      <ul>
+        <li>Mengakses data pumping dari berbagai ponsel yang berbeda secara bersamaan.</li>
+        <li>Melakukan pencatatan kolaboratif bersama suami, pengasuh bayi, atau anggota keluarga lainnya.</li>
+        <li>Menjamin data tetap aman bahkan ketika Anda menghapus aplikasi atau mengganti ponsel.</li>
+      </ul>
+      <div class="alert">
+        <strong>PENTING:</strong> Kami telah memperbarui kode aplikasi Anda sehingga Anda dapat dengan mudah mengubah alamat URL server database langsung melalui halaman <strong>Pengaturan (Settings)</strong> aplikasi tanpa perlu mengompilasi ulang aplikasi!
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Metode 1: Deploy Gratis Menggunakan Railway</h2>
+      <p><span class="badge badge-free">Gratis</span> <span class="badge badge-recommend">Direkomendasikan (Mudah & Cepat)</span></p>
+      <p>Railway mendukung Node.js dan menyediakan fitur <em>Persistent Volume</em>. Ini sangat cocok untuk menyimpan database SQLite (<code>database.sqlite</code>) agar data tidak hilang ketika server dinyalakan ulang.</p>
+      
+      <h3>Langkah-langkah:</h3>
+      <ol>
+        <li>Buka website <a href="https://railway.app" target="_blank" style="color: var(--primary); font-weight: 600;">Railway.app</a> dan daftarlah dengan akun GitHub Anda.</li>
+        <li>Hubungkan repositori GitHub Anda <code>https://github.com/luviadibaskoro-beep/ASIP-MAS-LUVI.git</code>.</li>
+        <li>Pilih sub-folder <code>backend/</code> sebagai root directory deployment.</li>
+        <li>Pada tab <strong>Settings</strong> di project Railway Anda, tambahkan <strong>Volume</strong> (persistent disk) dan mount ke folder <code>/data</code>.</li>
+        <li>Tambahkan Variabel Lingkungan (Environment Variables) berikut pada tab <strong>Variables</strong>:
+          <div class="code-block">
+PORT=5000
+DATABASE_PATH=/data/database.sqlite
+          </div>
+        </li>
+        <li>Deploy project Anda. Setelah berhasil, Railway akan menyediakan alamat URL publik berformat HTTPS, misalnya: <code>https://asip-backend.up.railway.app</code>.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>Metode 2: Deploy Gratis Menggunakan Render</h2>
+      <p><span class="badge badge-free">Gratis</span></p>
+      <p>Render menyediakan hosting gratis untuk server Node.js. Namun, untuk menjaga database SQLite Anda tetap aman di Render gratis, Anda direkomendasikan mengintegrasikannya dengan cloud database luar seperti Neon (Postgres) atau Supabase.</p>
+      
+      <h3>Langkah-langkah:</h3>
+      <ol>
+        <li>Masuk ke <a href="https://render.com" target="_blank" style="color: var(--primary); font-weight: 600;">Render.com</a> dan buatlah akun menggunakan GitHub.</li>
+        <li>Klik <strong>New +</strong> lalu pilih <strong>Web Service</strong>.</li>
+        <li>Hubungkan repositori GitHub Anda dan atur kolom konfigurasi berikut:
+          <ul>
+            <li><strong>Root Directory:</strong> <code>backend</code></li>
+            <li><strong>Build Command:</strong> <code>npm install</code></li>
+            <li><strong>Start Command:</strong> <code>node server.js</code></li>
+          </ul>
+        </li>
+        <li>Gunakan database PostgreSQL gratis dari <a href="https://neon.tech" target="_blank" style="color: var(--accent); font-weight: 600;">Neon.tech</a> atau <a href="https://supabase.com" target="_blank" style="color: var(--accent); font-weight: 600;">Supabase</a>.</li>
+        <li>Dapatkan koneksi string database Anda dan pasang pada variabel lingkungan <code>DATABASE_URL</code> di Render.</li>
+        <li>Tunggu proses deployment selesai sampai Anda memperoleh link HTTPS publik dari Render, contoh: <code>https://asip-backend.onrender.com</code>.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>Cara Menghubungkan Aplikasi ke Database Online Anda</h2>
+      <p>Setelah mendapatkan URL publik dari salah satu layanan di atas, Anda tidak perlu mengompilasi ulang aplikasi! Cukup ikuti langkah berikut:</p>
+      <ol>
+        <li>Buka aplikasi <strong>ASIPCare</strong> di ponsel Android atau browser Anda.</li>
+        <li>Pergi ke menu <strong>Pengaturan (Settings)</strong> (ikon gerigi).</li>
+        <li>Cari kartu bertuliskan <strong>"Server Database Online"</strong> di sebelah kanan bawah.</li>
+        <li>Masukkan alamat URL publik Anda (misalnya: <code>https://asip-backend.up.railway.app</code>) ke dalam kolom input.</li>
+        <li>Klik tombol <strong>"Simpan & Hubungkan"</strong>.</li>
+        <li>Aplikasi akan secara otomatis mengetes koneksi ke server database online Anda. Jika berhasil, aplikasi akan melakukan memuat ulang (*reload*) dan mulai melakukan sinkronisasi data secara online!</li>
+      </ol>
+      <p>Untuk kembali menggunakan database lokal offline, cukup kosongkan kolom input URL tersebut dan klik <strong>"Simpan & Hubungkan"</strong> kembali.</p>
+    </div>
+
+    <div style="text-align: center; margin-bottom: 4rem;">
+      <p style="font-size: 0.9rem; color: #6b7280;">ASIPCare App • Dibuat dengan cinta untuk Ibu Hebat dan Si Kecil ❤️</p>
+    </div>
+
+  </main>
+
+</body>
+</html>
